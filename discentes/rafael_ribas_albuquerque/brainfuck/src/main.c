@@ -1,12 +1,11 @@
 #include <stdio.h>
 
-#define TAMANHODATA 3000
-
-
-
+#define TAMANHODATA 1001
 void brainfuck (char *texto, char *comeco) {
 
 	char comandos;
+
+	int i;
 
 	char dados[TAMANHODATA] = {0};
 
@@ -15,31 +14,31 @@ void brainfuck (char *texto, char *comeco) {
 	ponteiro = &dados[TAMANHODATA / 2]; //iniciar o ponteiro na metade do vetor, assim consigo ir tanto pra direita quanto ppara esquerda 
 
 
-		while (comandos = *texto++) {
+		while (comandos = *texto++)
 	
 			switch (comandos) {
 				
 	    case '>':
-	      printf("chegou >");
+	      // printf("chegou >");
 				ponteiro++;
 	      break;
 	    
 			case '<':   
-	    printf("chegou <");
+	    // printf("chegou <");
 				ponteiro--;
 	      break;
 	    
 			case '+':  
-	    	printf("chegou +");
+	    	// printf("chegou +");
 				(*ponteiro)++;
 	      break;
 	    
 			case '-':  
-	    	printf("chegou -");
+	    	// printf("chegou -");
 				(*ponteiro)--;
 	      break;
 	    case '.':   
-	    printf("chegou .");
+	    // printf("chegou .");
 				printf("%c", *ponteiro);
 	      break;
 	    
@@ -49,11 +48,11 @@ void brainfuck (char *texto, char *comeco) {
 	      break;
 
 			case '[':
-				printf("chegou [");
+				// printf("chegou [");
 				if (!*ponteiro){
 
 					//procura até a outra chave e faz seu loop
-					for (int i = 1; i; texto++){
+					for (i = 1; i; texto++){
 
 						if (*texto == '['){
 							i++;
@@ -61,17 +60,17 @@ void brainfuck (char *texto, char *comeco) {
 						else if(*texto == ']'){
 							i--;
 						}
-						break;
 					}
 				}
+				break;
 
 			case ']':
-printf("chegou ]");
+// printf("chegou ]");
 				if (*ponteiro){
 
 					texto -= 2;
 
-					for (int i = 1; i; texto--) {
+					for (i = 1; i; texto--) 
 
 						if(*texto == ']') {
 							i++;
@@ -80,22 +79,22 @@ printf("chegou ]");
 							i--;
 						}
 						texto++;
-					}
 				}
-			
 				break;
 		}
 	
 			printf("\n");
-	}
 }
+
 
 int main() {
   
-	char *hello_world_code = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.";
+	char *olaMundo= "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.";
   
-	char *input = "";
+	char *start = "";
   
-	brainfuck(hello_world_code, input);
-  return 0;
+	brainfuck(olaMundo, start);
+  
+	return 0;
+
 }
