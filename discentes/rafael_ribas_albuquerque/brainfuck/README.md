@@ -1,0 +1,1 @@
+para conseguir rodar o programa basta utilizar o comando make e depois o comande ./main
